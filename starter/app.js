@@ -5,6 +5,7 @@ const connectDb = require('./db/db');
 const port = 3000;
 const  tasks =  require('./router/routed');
 const  chats =  require('./router/chat_router');
+const  user =  require('./router/user_router');
 
 
 
@@ -17,13 +18,13 @@ app.use(bodyParser.json())
 app.use(expressServer.static('public'));
 
 
-app.get("/",(req,res)=>{
-    res.send(req.params)
+app.post("/user/v1/",(req,res)=>{
+    res.send(req.body)
 })
 
 
-app.use('/app/v1/',tasks);
 app.use('/chat/v1/',chats);
+app.use('/user/v1/',user);
 
 
 
